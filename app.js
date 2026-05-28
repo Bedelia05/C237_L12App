@@ -11,14 +11,24 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
 // Declare any necessary variables or in-memory data structures here
-
+let journalEntries = [];
 
 // TASK: Define appropriate routes below
 // ---------------------------------------------------
+app.get('/addjournal', (req, res) => {
+    res.render('addjournal');
+});  
+app.post('/addjournal', (req, res) => {
+    // Extract data from the request body
+    const { title, date, content } = req.body;
+    const newEntry = { title, date, content };      
+    journalEntries.push(newEntry);
+    res.redirect('/');
+});
 
 //Define a route to render the index page
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', { journalEntries });
 });
 
 // ---------------------------------------------------
