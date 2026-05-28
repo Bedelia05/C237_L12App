@@ -13,21 +13,21 @@
     <!-- Activity 4: Insert code here to include the header (found in the partials folder) to your page -->
     <%- include('partials/navbar') %>
         <div class="container mt-4">
-            <h1>Add Journal Entry</h1>
-            <form action="/addjournal" method="POST">
+            <h1>Update Journal Entry</h1>
+            <form action="/edit/<%= index %>" method="POST">
                 <div class="mb-3 mt-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" required>
+                    <input type="text" class="form-control" id="title" name="title" value="<%= entry.title %>" required>
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="date" class="form-label">Date</label>
-                    <input type="date" class="form-control" id="date" name="date" required>
+                    <input type="date" class="form-control" id="date" name="date" value="<%= entry.date %>" required>
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="content" class="form-label">Journal</label>
-                    <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+                    <textarea class="form-control" id="content" name="content" rows="5" required><%= entry.content %></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Add Entry</button>
+                <button type="submit" class="btn btn-primary">Update Entry</button>
             </form>
         </div>
 </body>

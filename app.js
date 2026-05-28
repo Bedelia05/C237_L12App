@@ -31,6 +31,26 @@ app.get('/', (req, res) => {
     res.render('index', { journalEntries });
 });
 
+//update journal entry
+app.get('/edit/:index', (req, res) => {
+    const index = req.params.index;
+    const entry = journalEntries[index];
+    res.render('updatejournal', { entry, index });
+});
+
+app.post('/edit/:index', (req, res) => {
+    const index = req.params.index;
+    const { title, date, content } = req.body;
+    journalEntries[index] = { title, date, content };
+    res.redirect('/');
+});
+
+//delete journal entry
+app.post('/delete/:index', (req, res) => {
+    const index = req.params.index;
+    journalEntries.splice(index, 1);
+    res.redirect('/');
+});
 // ---------------------------------------------------
 
 

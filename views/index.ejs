@@ -15,25 +15,29 @@
         <div class="container mt-4">
             <h2>Welcome to Daily Journal</h2>
             <table class="table table-striped">
-                <thead>
                 <tbody>
                     <% for (let i=0; i < journalEntries.length; i++) { %>
                         <tr>
                             <td>
-                                <h5><%= journalEntries[i].title %></h5>
-                                <p><h6>Date:</h6>
-                                    <%= journalEntries[i].date %></p>
-                                <p><h6>Journal:</h6>
-                                    <%= journalEntries[i].content %></p>
+                                <h5>
+                                    <%= journalEntries[i].title %>
+                                </h5>
+                                <p><strong>Date:</strong> <br>
+                                    <%= journalEntries[i].date %>
+                                </p>
+                                <p><strong>Journal:</strong><br>
+                                    <%= journalEntries[i].content %>
+                                </p>
                                 <p>
-                                    <a href="#">Edit</a>
-                                    <a href="#">Delete</a>
+                                    <a href="/edit/<%= i %>" class="btn btn-primary btn-sm" style="display:inline;">Edit</a>
+                                    <form action="/delete/<%= i %>" method="POST" style="display:inline;">
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
                                 </p>
                             </td>
                         </tr>
                         <% } %>
                 </tbody>
-                </thead>
             </table>
         </div>
 </body>
