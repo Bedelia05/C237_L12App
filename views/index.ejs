@@ -28,12 +28,12 @@
                                 <p><strong>Journal:</strong><br>
                                     <%= journalEntries[i].content %>
                                 </p>
-                                <p>
+                                <div class="d-flex gap-2">
                                     <a href="/edit/<%= i %>" class="btn btn-primary btn-sm" style="display:inline;">Edit</a>
                                     <form action="/delete/<%= i %>" method="POST" style="display:inline;">
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
-                                </p>
+                                </div>
                             </td>
                         </tr>
                         <% } %>
